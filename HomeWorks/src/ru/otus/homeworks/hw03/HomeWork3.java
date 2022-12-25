@@ -11,10 +11,10 @@ class Questions {
 
     public boolean checkAnswer() {
         System.out.println(question);
-        System.out.println("Выберите вариант ответа: ");
         for (int n = 0; n < questionAnswers.length; n++) {
             System.out.println(n + 1 + ". " + questionAnswers[n]);
         }
+        System.out.print("Выберите вариант ответа: ");
         Scanner scanner = new Scanner(System.in);
         int answer = scanner.nextInt();
         if (answer == trueAnswer) {
