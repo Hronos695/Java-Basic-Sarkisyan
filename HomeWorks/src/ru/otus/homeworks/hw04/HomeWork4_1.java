@@ -35,7 +35,7 @@ public class HomeWork4_1 {
         long start2 = System.nanoTime();
         System.out.println("Изначальный массив      " + array2);
         Collections.sort(array2);
-        System.out.println("Отсортированный массив  " + array);
+        System.out.println("Отсортированный массив  " + array2);
 
         long end2 = System.nanoTime();
         long timeInMicro2 = TimeUnit.MICROSECONDS.convert(end2 - start2, TimeUnit.NANOSECONDS);
