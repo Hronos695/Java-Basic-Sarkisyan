@@ -28,7 +28,18 @@ class Client {
         this.clientAge = clientAge;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return clientAge == client.clientAge && Objects.equals(clientName, client.clientName);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(clientName, clientAge);
+    }
 }
 
 class Account {
@@ -43,7 +54,18 @@ class Account {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return accountNumber == account.accountNumber;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountNumber);
+    }
 }
 
 public class HomeWork5_1 {
@@ -81,10 +103,10 @@ public class HomeWork5_1 {
         bank.put(client3, clientAccounts3);
 
         //Вывод клиента по счёту
-        System.out.println(findClient(bank, acc6).getClientName());
+        System.out.println(findClient(bank, new Account(5)).getClientName());
 
         //Вывод счетов клиента
-        for (Account account : findAccounts(bank, client3)) {
+        for (Account account : findAccounts(bank, new Client("Игорь", 40))) {
             System.out.println(account.getAccountNumber());
         }
 
@@ -107,16 +129,3 @@ public class HomeWork5_1 {
 
     }
 }
-
-//    public static ArrayList<Account> findAccounts1(HashMap<Client, ArrayList<Account>> bank, Client clientName) {
-//
-//            for (Map.Entry<Client, ArrayList<Account>> clientAccounts : bank.entrySet()) {
-//                //      for (Client client1 : clientAccounts.getKey()) {
-//                if (clientAccounts.getKey().equals(clientName)) {
-//                    return clientAccounts.getValue();
-//                }
-//            }
-//
-//        return null;
-//        }
-//
