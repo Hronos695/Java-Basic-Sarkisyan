@@ -54,5 +54,9 @@ public class HomeWork6_2 {
             int secretNumber = new Random().nextInt(4);
             c.guess(secretNumber);
         }
+        catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
