@@ -2,6 +2,8 @@ package ru.otus.homeworks.hw11;
 
 import java.util.Scanner;
 
+
+
 class Input {
 
     public boolean checkInput(int number) {
@@ -16,8 +18,7 @@ class Input {
 
 class Mod {
 
-    //public boolean addCurrency(int number) {
-    public String GetRuble(int num) {
+    public String getRuble(int num) {
         var secondFromEnd = num % 100 / 10;
         if (secondFromEnd == 1) {
             return "рублей";
@@ -31,7 +32,7 @@ class Mod {
     }
 
     //Для добавления любой новой валюты достаточно создать новый метод
-    public String GetDollar(int num) {
+    public String getDollar(int num) {
         var secondFromEnd = num % 100 / 10;
         if (secondFromEnd == 1) {
             return "долларов";
@@ -46,24 +47,29 @@ class Mod {
 
 }
 
+class Result {
+
+
+    public String getResult(boolean userInput, int number) {
+        Mod currency = new Mod();
+        if (userInput) {
+            return (number + " " + currency.getRuble(number));
+        } else {
+            return String.valueOf(number);
+        }
+    }
+}
+
 
 public class HomeWork11_1 {
-    public static void main(String[] args) {
+    public static void main(String ...args) {
         System.out.println("Введите целое число от одного до миллиона");
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
-
         Input check1 = new Input();
-        Mod rubles = new Mod();
-
+        Result result= new Result();
         boolean userInput = check1.checkInput(number);
 
-        if (userInput) {
-            System.out.println(number + " " + rubles.GetRuble(number));
-            System.out.println(number + " " + rubles.GetDollar(number));// Добавление новой валюты
-        } else {
-            System.out.print(number);
-        }
-
+        System.out.println(result.getResult(userInput,number));
     }
 }
